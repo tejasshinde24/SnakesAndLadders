@@ -24,5 +24,13 @@ namespace SnakesAndLadders.Tests
         {
             Assert.Throws<ArgumentException>(()=>DiceThrow.Turn(currentPosition, numberOnDice));
         }
+
+        [Fact]
+        public void DiceThrow_ShouldMovePlayer_ForThePositionSeven_IfUpdatedPositionIsFourteen()
+        {
+            var updatedPosition = DiceThrow.Turn(10, 4);
+            var expectedPosition = 7;
+            Assert.Equal(expectedPosition, updatedPosition);
+        }
     }
 }

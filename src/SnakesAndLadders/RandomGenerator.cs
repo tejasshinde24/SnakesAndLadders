@@ -5,12 +5,17 @@ namespace SnakesAndLadders
     public static class RandomGenerator
     {
         private static readonly Random _random = new Random();
-        private static readonly int _min = 1;
-        private static readonly int _max = 6;
 
-        public static int GetRandomDiceNumber()
+        public static int GetRandomDiceNumber(bool isCrookedDice = false)
         {
-            return _random.Next(_min, _max); 
+            if (isCrookedDice)
+            {
+                return _random.Next(1,4) * 2;
+            }
+            else
+            {
+                return _random.Next(1, 7);
+            }
         }
     }
 }

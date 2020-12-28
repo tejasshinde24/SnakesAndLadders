@@ -9,14 +9,19 @@ namespace SnakesAndLadders
             ValidateThrow(currentPosition, numberOnDice);
             if (currentPosition + numberOnDice > 100)
             {
+                return currentPosition;
                 //do nothing as player can't move 
             }
             else
             {
                 currentPosition += numberOnDice;
+                if (SnakesOrLadders.Snake.ContainsKey(currentPosition))
+                {
+                    SnakesOrLadders.Snake.TryGetValue(currentPosition, out int updatedPosition);
+                    return updatedPosition;
+                }
+                return currentPosition;
             }
-
-            return currentPosition;
         }
 
         private static void ValidateThrow(int currentPosition, int numberOnDice)
